@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+{% block title %}Vendor admin| {% endblock  %} 
+{% block content %}
+<h1>Vendor admin - {{ vendor.name }} </h1>
+<a href="{% url 'logout' %}" class="text-sm font-normal text-gray-500 hover:text-white"> Logout</a>
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col text-center w-full mb-20">
+        <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">My products</h1>
+        <a href="{% url 'add_product' %}" class="text-sm font-normal text-gray-500 hover:text-blue-500"> Add product</a>
+      </div>
+      <div class="lg:w-2/3 w-full mx-auto overflow-auto">
+        {% if products %}
+        <table class="table-auto w-full text-left whitespace-no-wrap">
+          <thead>
+            <tr>
+              <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">Title</th>
+              <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for product in products  %}
+            <tr>
+              <td class="px-4 py-3">{{ product.title }}</td>
+              <td class="px-4 py-3">₦{{ product.price }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+            <p>You don't have any products yet ...</p>
+        {% endif %}
+      </div>
+      <div class="flex pl-4 mt-4 lg:w-2/3 w-full mx-auto">
+      </div>
+    </div>
+  </section>
+{% endblock  %}
