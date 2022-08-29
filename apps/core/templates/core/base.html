@@ -32,6 +32,34 @@
           </div>
         </div>
     </header>
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+          <form method="get" action="{% url 'search' %}">
+          <div class="relative flex-grow w-full">
+            <input type="text" placeholder="Search..." name="query" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          </div>
+          <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Search</button>
+        </form>
+        </div>
+      </div>
+    </section>
+    <section class="text-gray-600 body-font">
+      <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+        <div class="text-center lg:w-2/3 w-full">
+          <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Search by category </h1>
+         <div class="flex justify-center">
+          {% for category in menu_categories  %}
+            <button class="inline-flex text-white  bg-gray-800 border-0 ml-6 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
+              <a href="{% url 'category' category.slug %}" class="font-medium hover:text-white">
+                {{ category.title }} 
+              </a>
+            </button>
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
     {% block content %}
     {% endblock  %}
     <footer class="bg-gray-900" aria-labelledby="footer-heading">

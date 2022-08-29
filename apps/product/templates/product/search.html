@@ -1,12 +1,16 @@
 {% extends 'core/base.html' %}
-{% block title %}Welcome | {% endblock  %} 
+
+{% block title %}Search | {% endblock %}
+
 {% block content %}
 <section class="text-gray-600 body-font">
     <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-col text-center w-full mb-20">
-            <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Newest products</h1>
+            <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Search</h1>
+            <h3 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Search term: "{{ query }}"</h3>
+
         </div>
-        {% for product in newest_products %}
+        {% for product in products %}
         <div class="flex flex-wrap -m-4">
           <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
             <a class="block relative h-48 rounded overflow-hidden">
@@ -29,16 +33,5 @@
       {% endfor %}
     </div>
   </section>
-  {% if similar_products %}
-  <section class="text-gray-600 body-font">
-    <div class="container px-5 py-24 mx-auto">
-        <div class="flex flex-col text-center w-full mb-20">
-            <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Similar products</h1>
-        </div>
-        {% for product in similar_products %}
-            {% include 'product/parts/list_item.html' %}
-        {% endfor %}
-    </div>
-  </section>
-  {% endif %}
-{% endblock  %}
+{% endblock content %}
+
